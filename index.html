@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guruprasad | Portfolio</title>
-  
+
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -94,6 +94,9 @@
     .bg2 { background: rgba(88, 166, 255, 0.05); }
     .bg3 { background: rgba(255, 255, 255, 0.06); }
     .bg4 { background: rgba(70, 130, 180, 0.08); }
+    .bg5 { background: rgba(88, 166, 255, 0.06); }
+    .bg6 { background: rgba(255, 255, 255, 0.03); }
+    .bg7 { background: rgba(88, 166, 255, 0.05); }
 
     section h2 {
       color: #58a6ff;
@@ -156,6 +159,45 @@
       color: #888;
     }
 
+    /* Mobile Nav */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1001;
+      font-size: 2rem;
+      color: #58a6ff;
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: #16171b;
+      height: 100vh;
+      width: 200px;
+      padding: 2rem 1rem;
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-nav.open {
+      transform: translateX(0);
+      display: block;
+    }
+
+    .mobile-nav a {
+      display: block;
+      margin: 1rem 0;
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
     @media (max-width: 768px) {
       nav {
         display: none;
@@ -164,16 +206,46 @@
       .content {
         margin-left: 0;
         width: 100%;
+        padding: 1rem;
+      }
+
+      section {
+        padding: 1rem;
       }
 
       header img {
         margin: 0 auto 1rem auto;
         display: block;
       }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      ul.skills-list {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Mobile Toggle Menu -->
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileMenu">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#education" onclick="toggleMenu()">Education</a>
+    <a href="#skills" onclick="toggleMenu()">Skills</a>
+    <a href="#projects" onclick="toggleMenu()">Projects</a>
+    <a href="#Certifications" onclick="toggleMenu()">Certifications</a>
+    <a href="#resume" onclick="toggleMenu()">Resume</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+  </div>
 
   <!-- Sidebar Navigation -->
   <nav>
@@ -182,7 +254,7 @@
     <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
     <a href="#skills"><i class="fas fa-laptop-code"></i> Skills</a>
     <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
-    <a href="#Certifications "><i class="fas fa-award"></i> Certifications </a>
+    <a href="#Certifications"><i class="fas fa-award"></i> Certifications</a>
     <a href="#resume"><i class="fas fa-file-alt"></i> Resume</a>
     <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
   </nav>
@@ -197,151 +269,96 @@
 
     <section id="about" class="bg1" data-aos="fade-up">
       <h2>About Me</h2>
-      <p>Passionate developer with a love for building efficient software and elegant user interfaces
-    </p>
-    <p>
-I have successfully completed the Java Full Stack Web Development program at Tap Academy, where I gained hands-on experience in building dynamic web applications using technologies like Java, Spring Boot, HTML, CSS, JavaScript, and SQL
-    </p><P> The training helped me strengthen my core programming skills, understand software development, and work on real-time projects that enhanced my problem-solving and development abilities
-      </p>
+      <p>Passionate developer with a love for building efficient software and elegant user interfaces.</p>
+      <p>I have successfully completed the Java Full Stack Web Development program at Tap Academy, where I gained hands-on experience in building dynamic web applications using technologies like Java, Spring Boot, HTML, CSS, JavaScript, and SQL.</p>
+      <p>The training helped me strengthen my core programming skills, understand software development, and work on real-time projects that enhanced my problem-solving and development abilities.</p>
     </section>
 
     <section id="education" class="bg2" data-aos="fade-up">
       <h2>Education</h2>
       <ul>
-        <li><strong>B. Tech in Computer Science and Information Technology </strong> – Reva University, Bengaluru, Karnataka, India–2025</li>
-        <li>CGPA:7.33</li>
-        <li><strong>Diploma in Electronics and communication Engineering </strong> – MEI Polytechnic , Bengaluru Karnataka, India., Karnataka, India–2021</li>
-        <li>Percentage: 60.3% </li>
-        <li><strong>SSLC / 10TH CLASS </strong> – New Manjula Public School, Bengaluru Karnataka, India–2017</li>
-        <li>Percentage: 78.93% </li>
+        <li><strong>B. Tech in Computer Science and Information Technology</strong> – Reva University, Bengaluru, 2025</li>
+        <li>CGPA: 7.33</li>
+        <li><strong>Diploma in Electronics and Communication Engineering</strong> – MEI Polytechnic, Bengaluru, 2021</li>
+        <li>Percentage: 60.3%</li>
+        <li><strong>SSLC</strong> – New Manjula Public School, Bengaluru, 2017</li>
+        <li>Percentage: 78.93%</li>
       </ul>
     </section>
 
-   
     <section id="skills" class="bg3" data-aos="zoom-in-up">
       <h2>Skills</h2>
       <ul class="skills-list">
-        
-      <ul>Programming Languages
-
-  <li><i class="devicon-java-plain colored"></i> Java</li>
-  <li><i class="devicon-python-plain colored"></i> Python</li>
-  <li><i class="devicon-javascript-plain colored"></i> JavaScript</li>
-      </ul>
-      <ul>
-   Web Technologies
-  <li><i class="devicon-html5-plain colored"></i> HTML</li>
-  <li><i class="devicon-css3-plain colored"></i> CSS</li>
-  <li><i class="devicon-react-original colored"></i> React</li>
-  <li><i class="devicon-nodejs-plain colored"></i> Node.js</li>
-      </ul>
-      <ul>
-
-   Frameworks & Libraries 
-  <li><i class="devicon-spring-plain colored"></i> Spring</li>
-  <li><i class="devicon-spring-plain colored"></i> Spring Boot</li>
-</ul>
-
- <ul>
-   Databases 
-
-  <li><i class="devicon-mysql-plain colored"></i> MySQL</li>
-</ul>
- <ul>
-  DevOps & Cloud 
-  <li><i class="devicon-docker-plain colored"></i> Docker</li>
-
-  <li><i class="devicon-aws-plain colored"></i> AWS</li>
-</ul>
- <ul>
-   Tools 
-  <li><i class="devicon-git-plain colored"></i> Git</li>
-  <li><i class="devicon-github-original colored"></i> GitHub</li>
-
-  <li><i class="devicon-vscode-plain colored"></i> VS Code</li>
-
-  <li><i class="devicon-eclipse-plain colored"></i> Eclipse</li>
-  <li><i class="devicon-figma-plain colored"></i> Figma</li>
-
-
+        <li><i class="devicon-java-plain colored"></i> Java</li>
+        <li><i class="devicon-python-plain colored"></i> Python</li>
+        <li><i class="devicon-javascript-plain colored"></i> JavaScript</li>
+        <li><i class="devicon-html5-plain colored"></i> HTML</li>
+        <li><i class="devicon-css3-plain colored"></i> CSS</li>
+        <li><i class="devicon-react-original colored"></i> React</li>
+        <li><i class="devicon-nodejs-plain colored"></i> Node.js</li>
+        <li><i class="devicon-spring-plain colored"></i> Spring Boot</li>
+        <li><i class="devicon-mysql-plain colored"></i> MySQL</li>
+        <li><i class="devicon-docker-plain colored"></i> Docker</li>
+        <li><i class="devicon-aws-plain colored"></i> AWS</li>
+        <li><i class="devicon-git-plain colored"></i> Git</li>
+        <li><i class="devicon-github-original colored"></i> GitHub</li>
+        <li><i class="devicon-vscode-plain colored"></i> VS Code</li>
+        <li><i class="devicon-eclipse-plain colored"></i> Eclipse</li>
+        <li><i class="devicon-figma-plain colored"></i> Figma</li>
       </ul>
     </section>
 
-   <!-- Replace the entire #projects section with the following -->
-<section id="projects" class="bg4" data-aos="fade-up">
-  <h2>Projects</h2>
+    <section id="projects" class="bg4" data-aos="fade-up">
+      <h2>Projects</h2>
+      <div class="project-card" data-aos="fade-right">
+        <i class="fas fa-chart-line project-icon"></i>
+        <div>
+          <div class="project-title">Stock Market Analysis and Prediction</div>
+          <p>Developed a deep learning model using LSTM to predict stock trends from historical data.</p>
+        </div>
+      </div>
+      <div class="project-card" data-aos="fade-left">
+        <i class="fas fa-shopping-cart project-icon"></i>
+        <div>
+          <div class="project-title">E-Commerce Bookstore</div>
+          <p>Full-stack website with shopping cart, admin dashboard, and order simulation.</p>
+          <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
+        </div>
+      </div>
+      <div class="project-card" data-aos="fade-right">
+        <i class="fas fa-language project-icon"></i>
+        <div>
+          <div class="project-title">Simple Language Translator</div>
+          <p>Built using NLP + RNN to translate between multiple languages with a clean UI.</p>
+          <p><strong>Technologies:</strong> Python, Googletrans, NLTK, Tkinter</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Project 1 -->
-  <div class="project-card" data-aos="fade-right">
-    <i class="fas fa-chart-line project-icon"></i>
-    <div>
-      <div class="project-title">Stock Market Analysis and Prediction</div>
-      <p class="project-desc">
-        Developed a deep learning model using LSTM (Long Short-Term Memory) networks to predict stock market trends based on historical data.
-      </p>
-     
-    </div>
-  </div>
-
-  <!-- Project 2 -->
-  <div class="project-card" data-aos="fade-left">
-    <i class="fas fa-shopping-cart project-icon"></i>
-    <div>
-      <div class="project-title">E-Commerce Bookstore</div>
-      <p class="project-desc">
-        Full-stack website for book shopping, with cart, admin dashboard, order management, and payment simulation.
-      </p>
-      <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
-      
-    </div>
-  </div>
-
-  <!-- Project 3 -->
-  <div class="project-card" data-aos="fade-right">
-    <i class="fas fa-language project-icon"></i>
-    <div>
-      <div class="project-title">Simple Language Translator</div>
-      <p class="project-desc">
-        Built a language translator using NLP and RNN that converts input text between multiple languages with a simple UI.
-      </p>
-      <p><strong>Technologies:</strong> Python, Googletrans, NLTK, Tkinter</p>
-      
-    </div>
-  </div>
-
-  
-  
-</section>
-<section id="Certifications" class="bg5" data-aos="fade-left">
-  <h2>Certifications</h2>
-  <ul>
-   <li>
-  <strong>TAP ACADEMY – JAVA FULL STACK WEB DEVELOPMENT</strong><br>
-  <a href="https://drive.google.com/file/d/12faNmViiv6NAh0hNeBXck_4rVmoJyNlo/view?usp=sharing" target="_blank">
-    <button>🎓 Download javafullstack</button>
-  </a>
-</li>
-
-    <li>
-      <strong>IBM NODE JS</strong><br/>
-      <a href="https://courses.etrain.skillsnetwork.site/certificates/f8bdcebf6788424b8669447fdc66eac4" target="_blank">
-        View Certificate on LinkedIn
-      </a>
-    </li>
-    <li>
-      <strong>GLOBAL Certificate – IBM / REVA University</strong>
-    </li>
-  </ul>
-</section>
+    <section id="Certifications" class="bg5" data-aos="fade-left">
+      <h2>Certifications</h2>
+      <ul>
+        <li><strong>Java Full Stack - Tap Academy</strong><br>
+          <a href="https://drive.google.com/file/d/12faNmViiv6NAh0hNeBXck_4rVmoJyNlo/view?usp=sharing" target="_blank">
+            <button>🎓 Download javafullstack</button>
+          </a>
+        </li>
+        <li><strong>IBM Node.js</strong><br/>
+          <a href="https://courses.etrain.skillsnetwork.site/certificates/f8bdcebf6788424b8669447fdc66eac4" target="_blank">
+            View Certificate
+          </a>
+        </li>
+        <li><strong>Global Certification – IBM / REVA University</strong></li>
+      </ul>
+    </section>
 
     <section id="resume" class="bg6" data-aos="fade-left">
-  <h2>Resume</h2>
-  <p>Click below to download:</p>
-  <a href="https://drive.google.com/file/d/1bgCUQmRNY0jmxThbYDUahPFZcN3VCHax/view?usp=sharing" target="_blank">
-    <button>⬇️ Download Resume</button>
-  </a>
-</section>
-
+      <h2>Resume</h2>
+      <p>Click below to download:</p>
+      <a href="https://drive.google.com/file/d/1bgCUQmRNY0jmxThbYDUahPFZcN3VCHax/view?usp=sharing" target="_blank">
+        <button>⬇️ Download Resume</button>
+      </a>
+    </section>
 
     <section id="contact" class="bg7" data-aos="fade-up">
       <h2>Contact</h2>
@@ -353,28 +370,16 @@ I have successfully completed the Java Full Stack Web Development program at Tap
       </p>
     </section>
 
-    <footer>
-      <footer style="text-align: right; padding: 10px;">
-  © 2025 Guruprasad S M. All rights reserved. | Built with ❤️ using HTML, CSS & JavaScript
-</footer>
-
+    <footer style="text-align: right; padding: 10px;">
+      © 2025 Guruprasad S M. All rights reserved. | Built with ❤️ using HTML, CSS & JavaScript
     </footer>
   </div>
 
-  <!-- Download Scripts & AOS -->
+  <!-- Scripts -->
   <script>
-    function downloadResume() {
-      const link = document.createElement('a');
-      link.href = 'assets/Gururesume.pdf';
-      link.download = 'Gururesume.pdf';
-      link.click();
-    }
-
-    function downloadCertificate(file) {
-      const link = document.createElement('a');
-      link.href = 'assets/javafullstack.pdf';
-      link.download = 'javafullstack.pdf';
-      link.click();
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
     }
   </script>
 
