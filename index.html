@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -24,6 +24,16 @@
       display: flex;
       background: linear-gradient(135deg, #1d1e22, #2e3440);
       color: #f4f4f4;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .light-mode {
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    .light-mode nav {
+      background: #fff;
     }
 
     nav {
@@ -34,6 +44,7 @@
       position: fixed;
       left: 0;
       top: 0;
+      z-index: 100;
     }
 
     nav h2 {
@@ -75,7 +86,6 @@
 
     header h1 {
       font-size: 2rem;
-      color: #fff;
     }
 
     header p {
@@ -127,14 +137,14 @@
 
     button {
       margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
+      padding: 0.6rem 1rem;
       background: #58a6ff;
       color: #fff;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       transition: 0.3s ease;
-      display: inline-block;
+      font-size: 0.9rem;
     }
 
     button:hover {
@@ -154,12 +164,32 @@
     }
 
     footer {
-      text-align: center;
+      text-align: right;
       padding: 1rem;
       color: #888;
     }
 
-    /* Mobile Nav */
+    .light-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background: #58a6ff;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .light-toggle:hover {
+      background: #1d7be0;
+    }
+
     .menu-toggle {
       display: none;
       position: fixed;
@@ -209,15 +239,6 @@
         padding: 1rem;
       }
 
-      section {
-        padding: 1rem;
-      }
-
-      header img {
-        margin: 0 auto 1rem auto;
-        display: block;
-      }
-
       .menu-toggle {
         display: block;
       }
@@ -231,7 +252,12 @@
 </head>
 <body>
 
-  <!-- Mobile Toggle Menu -->
+  <!-- Light/Dark Toggle -->
+  <button class="light-toggle" onclick="toggleTheme()" title="Toggle Light Mode">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <!-- Mobile Toggle -->
   <div class="menu-toggle" onclick="toggleMenu()">
     <i class="fas fa-bars"></i>
   </div>
@@ -271,22 +297,22 @@
       <h2>About Me</h2>
       <p>Passionate developer with a love for building efficient software and elegant user interfaces.</p>
       <p>I have successfully completed the Java Full Stack Web Development program at Tap Academy, where I gained hands-on experience in building dynamic web applications using technologies like Java, Spring Boot, HTML, CSS, JavaScript, and SQL.</p>
-      <p>The training helped me strengthen my core programming skills, understand software development, and work on real-time projects that enhanced my problem-solving and development abilities.</p>
     </section>
 
     <section id="education" class="bg2" data-aos="fade-up">
       <h2>Education</h2>
       <ul>
-        <li><strong>B. Tech in Computer Science and Information Technology</strong> – Reva University, Bengaluru, 2025</li>
+        <li><strong>B. Tech in CSIT</strong> – Reva University, Bengaluru, 2025</li>
         <li>CGPA: 7.33</li>
-        <li><strong>Diploma in Electronics and Communication Engineering</strong> – MEI Polytechnic, Bengaluru, 2021</li>
+        <li><strong>Diploma in ECE</strong> – MEI Polytechnic, Bengaluru, 2021</li>
         <li>Percentage: 60.3%</li>
-        <li><strong>SSLC</strong> – New Manjula Public School, Bengaluru, 2017</li>
+        <li><strong>SSLC</strong> – New Manjula Public School, 2017</li>
         <li>Percentage: 78.93%</li>
       </ul>
     </section>
 
-     <section id="skills" class="bg3" data-aos="zoom-in-up">
+    
+    <section id="skills" class="bg3" data-aos="zoom-in-up">
       <h2>Skills</h2>
       <ul class="skills-list">
         
@@ -335,31 +361,12 @@
       </ul>
     </section>
 
+
     <section id="projects" class="bg4" data-aos="fade-up">
       <h2>Projects</h2>
-      <div class="project-card" data-aos="fade-right">
-        <i class="fas fa-chart-line project-icon"></i>
-        <div>
-          <div class="project-title">Stock Market Analysis and Prediction</div>
-          <p>Developed a deep learning model using LSTM to predict stock trends from historical data.</p>
-        </div>
-      </div>
-      <div class="project-card" data-aos="fade-left">
-        <i class="fas fa-shopping-cart project-icon"></i>
-        <div>
-          <div class="project-title">E-Commerce Bookstore</div>
-          <p>Full-stack website with shopping cart, admin dashboard, and order simulation.</p>
-          <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
-        </div>
-      </div>
-      <div class="project-card" data-aos="fade-right">
-        <i class="fas fa-language project-icon"></i>
-        <div>
-          <div class="project-title">Simple Language Translator</div>
-          <p>Built using NLP + RNN to translate between multiple languages with a clean UI.</p>
-          <p><strong>Technologies:</strong> Python, Googletrans, NLTK, Tkinter</p>
-        </div>
-      </div>
+      <p><strong>Stock Market Analysis</strong> – LSTM-based stock price predictor</p>
+      <p><strong>E-Commerce Bookstore</strong> – Full stack book shop with MongoDB</p>
+      <p><strong>Language Translator</strong> – NLP + Tkinter GUI</p>
     </section>
 
     <section id="Certifications" class="bg5" data-aos="fade-left">
@@ -367,21 +374,17 @@
       <ul>
         <li><strong>Java Full Stack - Tap Academy</strong><br>
           <a href="https://drive.google.com/file/d/12faNmViiv6NAh0hNeBXck_4rVmoJyNlo/view?usp=sharing" target="_blank">
-            <button>🎓 Download javafullstack</button>
+            <button>🎓 Java Full Stack</button>
           </a>
         </li>
-        <li><strong>IBM Node.js</strong><br/>
-          <a href="https://courses.etrain.skillsnetwork.site/certificates/f8bdcebf6788424b8669447fdc66eac4" target="_blank">
-            View Certificate
-          </a>
+        <li><strong>IBM Node.js</strong><br>
+          <a href="https://courses.etrain.skillsnetwork.site/certificates/f8bdcebf6788424b8669447fdc66eac4" target="_blank">View Certificate</a>
         </li>
-        <li><strong>Global Certification – IBM / REVA University</strong></li>
       </ul>
     </section>
 
     <section id="resume" class="bg6" data-aos="fade-left">
       <h2>Resume</h2>
-      <p>Click below to download:</p>
       <a href="https://drive.google.com/file/d/1bgCUQmRNY0jmxThbYDUahPFZcN3VCHax/view?usp=sharing" target="_blank">
         <button>⬇️ Download Resume</button>
       </a>
@@ -389,7 +392,7 @@
 
     <section id="contact" class="bg7" data-aos="fade-up">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:guruprasad@example.com">guruprasad@example.com</a></p>
+      <p>Email: <a href="mailto:guruprasadSM2001@gmail.com">guruprasadSM2001@gmail.com</a></p>
       <p class="contact">
         <a href="https://github.com/guruprasadsm" target="_blank"><i class="fab fa-github fa-lg"></i></a>
         <a href="https://www.linkedin.com/in/gurusm9999" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
@@ -397,16 +400,19 @@
       </p>
     </section>
 
-    <footer style="text-align: right; padding: 10px;">
-      © 2025 Guruprasad S M. All rights reserved. | Built with ❤️ using HTML, CSS & JavaScript
+    <footer>
+      © 2025 Guruprasad S M. All rights reserved. | Built with ❤️ using HTML, CSS & JS
     </footer>
   </div>
 
   <!-- Scripts -->
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
     }
   </script>
 
